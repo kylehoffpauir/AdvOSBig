@@ -1,59 +1,110 @@
-# AdvOSBig
-Project Proposal
 
-Before you begin working on your course project, you must submit a formal project proposal. The project proposal is meant to help you crystallize the details of your project and focus your energies on producing a high quality system and final paper. It will also help to clarify between you and the instructor what resources are needed, and what will be expected by the end of the semester. Projects will be performed in teams of 1-3 students (I highly recommend that students do not work alone on a project).
-
-Your semester project must involve the construction, quantitative evaluation, and scholarly exposition of some aspect of an operating system. You must develop a working system (the "code",) write up your findings (the "paper",) and present your findings to the class in a 10-15 minutes presentation (the "presentation".) The term "operating system" may be interpreted broadly to include any kind of management software, including conventional kernels, virtual machines, run-time libraries, distributed systems, etc. You may use whatever languages and tools are appropriate for the task. You may carry out a project that has never been done before, or you may repeat an old idea (e.g., a filesystem usage study), as long as you do everything from scratch, and clearly compare your results to what has come before. Consider the audience for your proposal to be fellow students who may not have read exactly the papers that you have. The proposal should be about three pages long.
-
-Your proposal should have the following sections:
-```
-    Abstract. The abstract should summarize the entire project in one paragraph. Follow this simple formula: state a problem, the general solution technique, the expected complications, the solution to those complications, and the nature of the evaluation that you will conduct. (It's usually easiest to write the abstract after you have finished everything else.)
-    Introduction. Begin by describing the big picture, describing the context that you are working in. Even if you are researching something that has been discussed in class, you must give a short introduction to the topic in your own words. Describe how this system or idea is used (or could be used) by real people. Give a short example of why this topic is difficult or interesting. Briefly state the problem that you wish to solve. For example, if you are working on the performance of virtual machines, then you should begin by describing what a virtual machine is, how it works, and what it might be used for. Then, write a compact, precise statement of the problem to be solved, such as: Virtual machines impose a high penalty on I/O. In this project, we will improve the I/O performance of the XYZ virtual machine monitor.
-    Related Work. Develop a small bibliography of papers related to the project, discuss the related papers that is most relevant to what you are doing. If what you are proposing as been done before, state so plainly, and clearly indicate a few papers, If you are doing something completely new, then pick out a few papers that are in the same general area, and explain how your work is different or better.
-    Proposed Work. Once you have laid out the background, describe exactly what you intend to accomplish. What will you build? What will you demonstrate? What machinery and software will you require? Where and how will you get such resources? What complications do you expect to encounter? Clearly state how your proposed work will address the problem stated in the introduction. If you will be constructing a system out of existing software, then include a diagram that shows how the various parts connect to each other. If you will be creating a large piece of software, then sketch the various modules and how they fit together.
-    Evaluation. Next, you must give a very specific statement of what quantitative evaluation you will perform in order to evaluate your work. Will you demonstrate that one system is more scalable than another? Will you demonstrate that one system performs better than another? Are you expecting a certain result? If you expect that your final paper will have some graphs (and it should), then put in two or three draft graphs. Of course, they won't contain any data, but decide on the axes, the units, and the nature of the experiments that will produce the graphs. If you have a hypothesis as to what the data will look like, then sketch in a curve with a pencil. Be sure to explain carefully how your results will support your evaluation goals. For example, if you are going to evaluate the scalability of a system, then you should be very sure to have a graph with the system size on the X axis and a performance metric on the Y axis.
-    Timeline. Give a timeline indicating what each group member will accomplish each week until the final project.
-    Team Composition and Responsibilities. Describe the team composition (e.g., names of each team member, 1st/2nd year grad student, background, particular skills or experience that may be helpful in this project, etc.) and responsibilities for each team member, i.e., how you will split the work between each other. Be detailed; responses such as "we all will work together for all tasks" are not acceptable! Each part/phase of your project should have somebody responsible.
-```
-
-Project Topics and Ideas
-
-The proposed project can be a brand-new idea, an extension/modification of a prior research idea, or an attempt to revisit an old idea. You may base the project on one of the papers we read in class, or develop your own bibliography for an investigation into a different project.
-
-A key component of the course will be the creation and/or modification of a systems artifact for the purposes of instrumentation and analysis. The project will involve an exploration of the existing literature, identification of key challenges, development or improvement of a system, and an analysis of the system proving successful completion of your system design, performance improvements compared to the state of the art, or some other assessment objectives. Your primary goal will be to turn your project into a fully-fledged systems research paper.
-
-The following list contains rough ideas or problems for your consideration. Part of your job will be to crystallize the purpose, methods, and scope of your specific project into a project proposal. Students may propose projects or topics not listed here, but should consult with the instructor before submitting a proposal. You can take any of these ideas or topics and add a "twist" to make it more interesting or challenging. You are also welcome to use your own research as inspiration for interesting systems challenges.
-```
-    File Systems A project in the area of file systems could study various performance bottlenecks and propose and develop new or modified file systems that may be provide improved performance for specific application scenarios. For example, with an increased interest in IoT and sensor networks, continuously arriving sensor data must be stored reliably and efficiently in files and databases on a computer system. A project could compare the database performance for various types of file systems, caching strategies, etc.
-    
-    Mobile Operating Systems With the rapid increase in mobile computing systems, mobile operating systems have also been receiving increased attention. A project could study the Android OS and propose one or more enhancements to Android that either address certain shortcomings or bottlenecks or provides new services. For example, energy efficiency is a key concern in mobile systems and new Android services could intelligently manage the device's resources to reduce energy costs (e.g., consolidating the sensor requests from multiple competing apps).
-    
-    Embedded/RT Operating Systems Embedded (and real-time) operating systems differ significantly from general-purpose systems such as Windows or Linux, e.g., many features are intentionally kept simple to make execution delays predictable and manageable. Projects focusing on embedded systems could study various performance aspects of such systems or develop enhancements that will make these systems suitable for future IoT applications, e.g., by providing support for on-device fusion and aggregation of multiple sensor streams, using prediction algorithms to decide if and which data to cache, or to coordinate processing among multiple devices.
-    
-    Real-Time Systems Real-time systems require that operations are not only correct, but also timely. A project could evaluate existing real-time scheduling techniques for various types of applications (sensor streams, multimedia, web servers, etc.) and propose/develop/evaluate a new scheduling strategy that combines advantages of existing techniques.
-    
-    Peer-to-Peer P2P communication is popular whenever a centralized solution could easily be overwhelmed. In this project, P2P protocols could be developed and evaluated, e.g., imagine the need to distribute a bug fix to thousands of computers quickly, efficiently, and reliably. How can we build a P2P file distribution system that can satisfy these conflicting requirements?
-    
-    Location- and Context-Awareness The availability of context information (location, identity of user, historical data, weather report, type of transportation, schedule, mood, etc.) can provide the foundation for an array of new or improved applications, often referred to as context-aware applications (e.g., imagine a computer that after turning on predicts which apps/services you need and opens them automatically). Projects in this area could focus on either getting context data (how can a system learn about the user or environment) or how to use such context data to provide new services, operate more efficiently, etc.
-    
-    Security Security and protection are key responsibilities of a computing system and a project could study various security challenges and concerns and propose new security features, especially addressing the needs of mobile or embedded systems. For example, imagine a web browser on a mobile device that adapts its security features depending on the type of network you are connected to or a browser that notifies the user of potential security concerns (e.g., whenever a website requests confidential information, connects to unknown (foreign) server addresses, etc.).
-    
-    Virtual Machines Study various aspects of VM performance or setup/configure an online VM farm that is customized to specific application requirements or security features.
-    
-    Cloud Services Develop a back-end cloud service for mobile or embedded devices that provides features and services such as automatic updates and notifications, processing of user/sensor data, sharing of data and resources between multiple users, or the ability to split processing tasks between mobile device and server.
-    
-    AI for Policy Decisions Create an Artificial Intelligent agent for making some type of policy decision that operating systems usually make. The agent may use machine learning techniques or a rule-based decision procedure for determining the choices.
-```
-Draft and Final Paper
-
-The final report for your class project will be written in the style of a conference or workshop publication. The paper must be written in LaTeX or some similar text formatting system. The requirements for the final paper are:
-```
-    Page limit: 10 pages (minimum: 8 pages), including all figures and references.
-    Font size: 10pt;
-    Use a meaningful title for your work and list all team members as authors (order does not matter).
-    The paper should have all typical sections that are appropriate for your type of paper, e.g., Abstract, Introduction, Related Work, Conclusions and Future Work, etc.
-    A bibliography
-```
-Final Presentation
-
-For the final project presentation/demonstration, you will have the opportunity to present your work and outcomes to the class. Clearly describe the problem you were solving, the solution you pursued, your methodologies or design choices, how you evaluated your solution, results obtained, etc. Your talk can also end with a brief outlook onto future steps or work, i.e., ideas how your work could be continued or further improved. Each team member should participate in the presentation. The presentation should be no more than 15 minutes long and each presentation will be followed by a brief Q&A. Demonstrations are encouraged if feasible, but recorded demonstrations are preferred (live demonstrations are risky) and they should not consume more than 5 minutes of your presentation time.
+Kyle Hoffpauir, Adam Kolides
+Dr. Simon
+Big Project Proposal
+Abstract
+This work aims to train 3 lightweight machine learning frameworks (Tensorflow Lite,
+Lasagne, and MXNet) to evaluate how well they can perform with a specific dataset. We are
+specifically looking at how well they function with regards to the Internet of Things and Edge
+Computing. We will evaluate our machine learning models on cpu usage, runtime, processor
+time, and accuracy to determine which lightweight machine learning library and model
+combination yields the best results.
+Introduction
+The Internet of Things is an expanding market rooted in embedded systems.
+Applications are leveraging the new power of microcomputers combined with machine learning
+to perform what is being called Edge Computing (Bazai). By placing sensors on the edge, data
+can be collected and sent to the cloud for processing and powerful results from a small internet
+connected device. This power can be further harnessed through an emerging paradigm of Edge
+Intelligence (Deng), placing the computing power of machine learning on these small IoT
+devices can create systems that are much more robust and advanced than traditional
+applications. However, this edge intelligence paradigm requires advancements of existing
+technology in the form of lightweight, portable systems. The market has thus grown with a new
+type of Artificial Intelligence system in the form of lightweight machine learning frameworks.
+These frameworks exist on the edge as sensors, using pre-trained models to classify incoming
+data in place before sending it to the cloud. This increases the overall power of the network and
+eases the strain on the cloud services hosting the edge intelligence model. The following work
+focuses on 3 lightweight machine learning frameworks: Tensorflow Lite, Lasagne, and MXNet.
+We aim to train these applications on the same dataset, a collection of temperatures and
+evaluate them (Data found here:
+https://www.kaggle.com/datasets/atulanandjha/temperature-readings-iot-devices). The
+applications will be trained using a variety of techniques, such as regression, decision trees, and
+clustering, and will be evaluated based on their cpu usage, accuracy, and speed. The ideal
+lightweight ML frameworks can produce a model which can accurately predict future data using
+the least amount of computational force the fastest.
+Related Work
+● Hafizur Rahman, Md. Iftekhar Hussain,
+A light-weight dynamic ontology for Internet of Things using machine learning technique,
+ICT Express,
+Volume 7, Issue 3,
+2021,
+Pages 355-360,
+ISSN 2405-9595,
+https://doi.org/10.1016/j.icte.2020.12.002.
+(https://www.sciencedirect.com/science/article/pii/S2405959520304902)
+● C. Wang, G. Papadimitriou, M. Kiran, A. Mandal and E. Deelman, "Identifying Execution
+Anomalies for Data Intensive Workflows Using Lightweight ML Techniques," 2020 IEEE
+High Performance Extreme Computing Conference (HPEC), 2020, pp. 1-7, doi:
+10.1109/HPEC43674.2020.9286139.
+https://ieeexplore.ieee.org/abstract/document/9286139/keywords#keywords
+● G.P. Sajeev, M.P. Sebastian,
+Building semi-intelligent web cache systems with lightweight machine learning
+techniques,
+Computers & Electrical Engineering,
+Volume 39, Issue 4,
+2013,
+Pages 1174-1191,
+ISSN 0045-7906,
+https://doi.org/10.1016/j.compeleceng.2013.02.005.
+(https://www.sciencedirect.com/science/article/pii/S0045790613000311)
+● Bzai, Jamal, et al. "Machine Learning-Enabled Internet of Things (IoT): Data,
+Applications, and Industry Perspective." Electronics 11.17 (2022): 2676.
+● Deng, Shuiguang, et al. "Edge intelligence: The confluence of edge computing and
+artificial intelligence." IEEE Internet of Things Journal 7.8 (2020): 7457-7469.
+● https://towardsdatascience.com/tiny-machine-learning-the-next-ai-revolution-495c26463
+868
+● https://www.tensorflow.org/lite
+● https://www.seeedstudio.com/blog/2021/06/14/everything-about-tinyml-basics-courses-pr
+ojects-more/
+● https://www.strong.io/blog/edge-machine-learning-from-poc-to-real-world-ai-applications
+● https://mxnet.apache.org/versions/1.9.1/
+● https://lasagne.readthedocs.io/en/latest/
+● https://www.kaggle.com/code/andreshg/automl-libraries-comparison
+Proposed Work
+In order to evaluate the performance of all of the lightweight ML frameworks, we will
+create a python application to do machine learning on a dataset, namely the temperature
+dataset. We aim to create a python application that will create a set of models for each
+framework. Each will implement regression, decision trees, and clustering. We will train the
+models and test them on this dataset. This portion of the application will represent the
+pre-trained cloud system.
+Once these models have been trained to the best of their capabilities, the lightweight ML
+frameworks will be implemented in a separate python object which will represent the portion of
+the frameworks that exists on the edge. The edge systems only have access to the pre-trained
+model and the input data, it will need to use this pre-trained model to classify the incoming data
+accurately. Each model will receive an influx of new mock “sensor data”, matching in style what
+they have been trained on. These models will then need to parse the data and use the
+pre-trained models they have access to from the cloud system in order to classify the data and
+produce a prediction. The lightweight frameworks will also send their results to the cloud in
+order to update the model in the cloud.
+As the mock edge devices run their machine learning, we will be taking metrics
+concerning cpu usage, runtime, and accuracy in order to get an accurate, numerical
+representation of the effectiveness of the different systems. These tests will be run a set amount
+of times and averaged in order to provide a more accurate metric.
+As an element of the project proposal, we are considering attempting to run these
+frameworks on a microcomputer such a raspberry pi. However, this would come with the
+caveats of securing a raspberry pi to work on and such may not be a viable option.
+Evaluation
+We will evaluate each machine learning model to see which framework/model
+combination has the best run time and accuracy. More specifically, the model with the smallest
+run time but highest accuracy level will be the goal. We will also be looking at memory usage,
+processor time, processor usage, and other similar metrics.
+Timeline
+Week 1 (10/31 - 11/7) Lightweight ML investigation & software design
+Week 2 (11/7 - 11/14) Implementing software (creating & training models)
+Week 3 (11/14 - 11/21) Implementing software (running & evaluating frameworks)
+Week 4 (11/21 - 11/28) Presentation/Paper construction
+Team Composition and Responsibilities
+Adam - Choose which ML techniques to use and evaluate, create graphs/charts, related work
+Kyle - Find Lightweight ML algorithms and datasets, create graphics (if applicable). Check
+kaggle for a good dataset
+Both - Write and run code to obtain performance metrics, write paper/presentation (exact
+sections will be decided at time of writing
