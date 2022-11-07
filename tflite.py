@@ -1,8 +1,8 @@
-import pandas as pd
 import tensorflow as tf
 from tensorflow import keras
 
 # Helper libraries
+import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import os
@@ -21,4 +21,5 @@ print(data.head())
 
 print(train_df.head())
 
-# https://www.tensorflow.org/tfx/tutorials/serving/rest_simple
+
+# https://www.tensorflow.org/lite/models/convert
