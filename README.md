@@ -51,7 +51,7 @@ Once these models have been trained to the best of their capabilities, the light
 As an element of the project proposal, we are considering attempting to run these frameworks on a microcomputer such a raspberry pi. However, this would come with the caveats of securing a raspberry pi to work on and such may not be a viable option.
 
 ### Evaluation 
-    We will evaluate each machine learning model to see which framework/model combination has the best run time and accuracy. More specifically, the model with the smallest run time but highest accuracy level will be the goal. We will also be looking at memory usage, processor time, processor usage, and other similar metrics. 
+We will evaluate each machine learning model to see which framework/model combination has the best run time and accuracy. More specifically, the model with the smallest run time but highest accuracy level will be the goal. We will also be looking at memory usage, processor time, processor usage, and other similar metrics. 
 
 ### Timeline
 Week 1     (10/31 - 11/7)         Lightweight ML investigation & software design
