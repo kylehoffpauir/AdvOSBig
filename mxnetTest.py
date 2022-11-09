@@ -5,6 +5,7 @@ from IPython import display
 import matplotlib.pyplot as plt
 import time
 
+#Create the .params file to be used to create the model
 '''mnist_train = datasets.FashionMNIST(train=True)
 X, y = mnist_train[0]
 ('X shape: ', X.shape, 'X dtype', X.dtype, 'y:', y)
