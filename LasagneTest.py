@@ -6,6 +6,7 @@ import sklearn.datasets
 #from __future__ import print_function
 import os
 import matplotlib.pyplot as plt
+import tensorflow as tf
 import IPython.display
 #IPython.display.Image("http://static-vegetariantimes.s3.amazonaws.com/wp-content/uploads/2009/03/10851medium.jpg")
 
@@ -14,12 +15,19 @@ warnings.filterwarnings('ignore', module='lasagne')
 
 # Generate synthetic data
 N_CLASSES = 4
-X, y = sklearn.datasets.make_classification(n_features=2, n_redundant=0,
- n_classes=N_CLASSES, n_clusters_per_class=1)
+mnist = tf.keras.datasets.mnist
+(Xtrain, Xtest), (ytrain, ytest) = mnist.load_data()
+X = np.concatenate(Xtrain, Xtest)
+y = np.concatenate(ytrain, ytest)
+#Xtrain, Xtest = Xtrain / 255.0, Xtest / 255.0
+ #sklearn.datasets.make_classification(n_features=2, n_redundant=0,
+ #n_classes=N_CLASSES, n_clusters_per_class=1)
 # Convert to theano floatX
 X = X.astype(theano.config.floatX)
+#Xtest = Xtest.astype(theano.config.floatX)
 # Labels should be ints
 y = y.astype('int32')
+#ytest = ytest.astype('int32')
 # Make a scatter plot where color encodes class
 plt.scatter(X[:, 0], X[:, 1], c=y)
 
@@ -66,7 +74,7 @@ for n in range(100):
 # The argmax converts the class probability output to class label
 y_predicted = np.argmax(get_output(X), axis=1)
 # Plot incorrectly classified points as black dots
-plt.scatter(X[:, 0], X[:, 1], c=(y != y_predicted), cmap=plt.cm.gray_r)
+plt.scatter(Xtrain[:, 0], X[:, 1], c=(y != y_predicted), cmap=plt.cm.gray_r)
 # Compute and display the accuracy
 plt.title("Accuracy: {}%".format(100*np.mean(y == y_predicted)))
 plt.show()
