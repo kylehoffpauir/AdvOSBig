@@ -101,7 +101,7 @@ net.export("net", epoch=1)
 #net.export("lenet", epoch=1)
 #print(net.summary())
 '''
-converted_model_path = onnx_mxnet.export_model('./net-symbol.json', './net-0001.params', [(128,784)], np.float64, 'converted.onnx')
+converted_model_path = onnx_mxnet.export_model('./net-symbol.json', './net-0001.params', [(128,784)], np.double, 'converted.onnx')
 
 
 
