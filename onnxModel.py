@@ -25,6 +25,7 @@ from mxnet import gluon
 from mxnet import autograd as ag
 from mxnet.contrib import onnx as onnx_mxnet
 
+
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
@@ -50,26 +51,26 @@ class Net(nn.Module):
         output = F.log_softmax(x, dim=1)
         return output
 
-model = Net()
-state_dict = torch.load("mnist_cnn.pt")
-model.load_state_dict(state_dict)
-##<All keys matched successfully>
-transform=transforms.Compose([
-        transforms.ToTensor(),
-        transforms.Normalize((0.1307,), (0.3081,))
-        ])
+
+def run(dataset2):
+    results = []
+    model = Net()
+    state_dict = torch.load("mnist_cnn.pt")
+    model.load_state_dict(state_dict)
+    ##<All keys matched successfully>
+    correct = 0
+    #image, label = dataset2[random.randint(0, 9999)]
+    for image, label in dataset2:
+        # image = image.unsqueeze(0)
+        image = image.unsqueeze(0)
+        output = model(image)
+        output = torch.argmax(output)
+        #print(output, label, output == label)
+        results.append(output==label)
+    return len(results) / len(dataset2)
 
 
-dataset2 = datasets.MNIST('../data', train=False,
-                       transform=transform)
-print(len(dataset2))
-image, label = dataset2[random.randint(0,9999)]
-#image = image.unsqueeze(0)
-image = image.unsqueeze(0)
-output = model(image)
-output = torch.argmax(output)
-print(output, label, output == label)
-#results.append(output==label)
+
 
 '''
 zero_img_path = keras.utils.get_file(
@@ -285,10 +286,6 @@ if __name__ == '__main__':
 
 '''
 
-
-
-
-
 '''
 
 import math
@@ -371,7 +368,6 @@ interpreter.allocate_tensors()
 interpreter.set_tensor(interpreter.get_input_details()[0]["index"], input_image)
 interpreter.invoke()
 output = interpreter.tensor(interpreter.get_output_details()[0]["index"])()[0]'''
-
 
 '''
 # Print the model's classification result
