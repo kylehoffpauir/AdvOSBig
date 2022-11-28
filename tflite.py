@@ -75,6 +75,6 @@ def novelRun(imgPath):
     output = interpreter.tensor(interpreter.get_output_details()[0]["index"])()[0]
     # Print the model's classification result
     digit = np.argmax(output)
-    print('Predicted Digit: %d\nConfidence: %f' % (digit, output[digit]))
-    return output, output[digit]
+    # print('Predicted Digit: %d\nConfidence: %f' % (digit, output[digit]))
+    return digit, output[digit]
 

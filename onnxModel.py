@@ -6,6 +6,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
+from torch import IntTensor
 from torchvision import datasets, transforms
 from torch.optim.lr_scheduler import StepLR
 import onnxruntime as rt
@@ -96,9 +97,8 @@ def novelRun(imgPath):
     input_image = torch.tensor(input_image)
     image = input_image.unsqueeze(0)
     output = model(image)
-    conf_score = torch.nn.functional.softmax(torch.from_numpy(output), dim=1)
-    output = torch.argmax(output)
-    print(output, 1, output == 1)
+    conf_score = torch.nn.functional.softmax(output, dim=1)
+    output = IntTensor.item(torch.argmax(output))
     return output, conf_score
 
 

@@ -1,3 +1,5 @@
+import os
+
 import psutil
 import onnxModel as onnx
 import tflite
@@ -50,9 +52,21 @@ print("onnx end " + str(onnx_endVM))
 
 
 # new data
-# for filepath in os.walk("novelset/")
-
-imgPath = "novelset/twoblack.png"
-tflite_result, tflite_conf = tflite.novelRun('newImages/twoblack.png')
-onnx_result, onnx_conf = onnx.novelRun('newImages/twoblack.png')
-print("on image: ")
+tf_score = 0.0
+onnx_score = 0.0
+total = 0
+for root, dir, imgPath in os.walk("novelset/"):
+    for image in imgPath:
+        actual = str(image)[0]
+        print("on image: " + image)
+        tflite_result, tflite_conf = tflite.novelRun(root+image)
+        if str(tflite_result) == str(actual):
+            tf_score += 1.0
+        onnx_result, onnx_conf = onnx.novelRun(root+image)
+        if str(onnx_result) == str(actual):
+            onnx_score += 1.0
+        print("TFLITE\nresult = " + str(tflite_result) + "\n confidence: " + str(tflite_conf))
+        print("\nONNX\nresult= " + str(onnx_result) + "\n")
+        total += 1.0
+print("\n\n\nTF SCORE: " + str((tf_score / total) * 100))
+print("ONNX SCORE: " + str((onnx_score / total) * 100))
