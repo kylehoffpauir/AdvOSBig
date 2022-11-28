@@ -32,3 +32,8 @@ print("tflite end " + str(onnx_endVM))
 print("onnx accuract: " + str(onnx_result))
 print("onnx begin " + str(onnx_beginVM))
 print("onnx end " + str(onnx_endVM))
+
+# new data
+# for filepath in os.walk("newImages/")
+#     x=imageprepare('newImages/seven.png')#file path here
+#     print(len(x))# mnist IMAGES are 28x28=784 pixels
