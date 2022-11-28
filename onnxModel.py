@@ -96,9 +96,10 @@ def novelRun(imgPath):
     input_image = torch.tensor(input_image)
     image = input_image.unsqueeze(0)
     output = model(image)
+    conf_score = torch.nn.functional.softmax(torch.from_numpy(output), dim=1)
     output = torch.argmax(output)
     print(output, 1, output == 1)
-    return output
+    return output, conf_score
 
 
 

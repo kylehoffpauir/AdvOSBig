@@ -50,9 +50,9 @@ print("onnx end " + str(onnx_endVM))
 
 
 # new data
-# for filepath in os.walk("newImages/")
+# for filepath in os.walk("novelset/")
 
-#novelData=imageProcess.imageprepare('newImages/seven.png')#file path here
+imgPath = "novelset/twoblack.png"
 tflite_result, tflite_conf = tflite.novelRun('newImages/twoblack.png')
-onnx_result = onnx.novelRun('newImages/twoblack.png')
-#     print(len(x))# mnist IMAGES are 28x28=784 pixels
+onnx_result, onnx_conf = onnx.novelRun('newImages/twoblack.png')
+print("on image: ")
