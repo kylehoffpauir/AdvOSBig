@@ -7,6 +7,7 @@ from tkinter import *
 import tkinter as tk
 import win32gui
 from PIL import ImageGrab, Image
+import time
 
 
 # gives a single float value
@@ -25,12 +26,17 @@ dataset2 = datasets.MNIST('../data', train=False,
                           transform=transform)
 print(len(dataset2))
 tflite_beginVM = psutil.cpu_percent(3)
+print(time.time())
 tflite_result, tflite_avgconf = tflite.run(dataset2)
-
+print(psutil.cpu_percent(3))
+print(time.time())
 
 onnx_beginVM = psutil.cpu_percent(3)
+print(time.time())
 onnx_result = onnx.run(dataset2)
 onnx_endVM = dict(psutil.virtual_memory()._asdict())
+print(time.time())
+
 
 print("tflite accuracy: " + str(tflite_result))
 print("tflite conf: " + str(tflite_avgconf))
