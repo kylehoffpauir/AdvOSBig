@@ -2,6 +2,13 @@ import psutil
 import onnxModel as onnx
 import tflite
 from torchvision import datasets, transforms
+import numpy as np
+from tkinter import *
+import tkinter as tk
+import win32gui
+from PIL import ImageGrab, Image
+
+
 # gives a single float value
 psutil.cpu_percent()
 # gives an object with many fields
@@ -32,6 +39,8 @@ print("tflite end " + str(onnx_endVM))
 print("onnx accuract: " + str(onnx_result))
 print("onnx begin " + str(onnx_beginVM))
 print("onnx end " + str(onnx_endVM))
+
+
 
 # new data
 # for filepath in os.walk("newImages/")
