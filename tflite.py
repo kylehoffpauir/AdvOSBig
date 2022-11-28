@@ -13,7 +13,6 @@ import subprocess
 from tensorflow.lite.python.lite import TFLiteConverter
 
 # Helper function to display digit images
-import imageProcess
 
 
 def show_sample(images, labels, sample_count=25):
