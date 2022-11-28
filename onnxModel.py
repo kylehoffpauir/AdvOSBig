@@ -25,6 +25,8 @@ from mxnet import gluon
 from mxnet import autograd as ag
 from mxnet.contrib import onnx as onnx_mxnet
 
+import tflite
+
 
 class Net(nn.Module):
     def __init__(self):
@@ -68,6 +70,35 @@ def run(dataset2):
         #print(output, label, output == label)
         results.append(output==label)
     return len(results) / len(dataset2)
+
+def novelRun(imgPath):
+    image = keras.preprocessing.image.load_img(
+        imgPath,
+        color_mode = 'grayscale',
+        target_size=(28, 28),
+        interpolation='bilinear'
+    )
+    # Pre-process the image: Adding batch dimension and normalize the pixel value to [0..1]
+    # In training, we feed images in a batch to the model to improve training speed, making the model input shape to be (BATCH_SIZE, 28, 28).
+    # For inference, we still need to match the input shape with training, so we expand the input dimensions to (1, 28, 28) using np.expand_dims
+    input_image = np.expand_dims(np.array(image, dtype=np.float32) / 255.0, 0)
+    # Show the pre-processed input image
+    # using the show_sample from tflite
+    tflite.show_sample(input_image, ['Input Image'], 1)
+    results = []
+    model = Net()
+    state_dict = torch.load("mnist_cnn.pt")
+    model.load_state_dict(state_dict)
+    ##<All keys matched successfully>
+    correct = 0
+    #image, label = dataset2[random.randint(0, 9999)]
+    # image = image.unsqueeze(0)
+    input_image = torch.tensor(input_image)
+    image = input_image.unsqueeze(0)
+    output = model(image)
+    output = torch.argmax(output)
+    print(output, 1, output == 1)
+    return output
 
 
 
