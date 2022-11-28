@@ -50,6 +50,7 @@ def run(dataset2):
     #
 
     results = []
+    confidence = []
     for image, label in dataset2:
         # Load TFLite model and allocate tensors.
         interpreter = tf.lite.Interpreter(model_path="model_quant_tl.tflite")
@@ -58,9 +59,11 @@ def run(dataset2):
         interpreter.set_tensor(interpreter.get_input_details()[0]["index"], image)
         interpreter.invoke()
         output = interpreter.tensor(interpreter.get_output_details()[0]["index"])()[0]
+        interpreter.get_output_details()
         # Print the model's classification result
         digit = np.argmax(output)
         #print('Predicted Digit: %d\nConfidence: %f' % (digit, output[digit]))
+        confidence.append(output[digit])
         results.append(output==label)
-    return len(results) / len(dataset2)
+    return (len(results) / len(dataset2)), (sum(confidence) / len(confidence))
 
