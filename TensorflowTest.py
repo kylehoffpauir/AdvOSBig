@@ -2,7 +2,7 @@ import numpy as np
 import tensorflow as tf
 
 #https://colab.research.google.com/github/tensorflow/tensorflow/blob/master/tensorflow/lite/examples/experimental_new_converter/Keras_LSTM_fusion_Codelab.ipynb#scrollTo=-yEAraXGDlcQ
-
+#https://www.tensorflow.org/lite/performance/post_training_float16_quant
 
 model = tf.keras.models.Sequential([
     tf.keras.layers.Input(shape=(28, 28), name='input'),

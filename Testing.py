@@ -27,16 +27,24 @@ transform = transforms.Compose([
 dataset2 = datasets.MNIST('../data', train=False,
                           transform=transform)
 print(len(dataset2))
+print("TFLITE")
 tflite_beginVM = psutil.cpu_percent(3)
+print("begin time: ")
 print(time.time())
 tflite_result, tflite_avgconf = tflite.run(dataset2)
+print("calculating cpu percentage")
 print(psutil.cpu_percent(3))
+print("end time: ")
 print(time.time())
 
+print("ONNX")
 onnx_beginVM = psutil.cpu_percent(3)
+print("begin time")
 print(time.time())
 onnx_result = onnx.run(dataset2)
+print("calculating cpu percentage")
 onnx_endVM = dict(psutil.virtual_memory()._asdict())
+print("end time")
 print(time.time())
 
 
@@ -45,12 +53,12 @@ print("tflite conf: " + str(tflite_avgconf))
 print("tflite begin " + str(onnx_beginVM))
 print("tflite end " + str(onnx_endVM))
 
-print("onnx accuract: " + str(onnx_result))
+print("onnx accuracy: " + str(onnx_result))
 print("onnx begin " + str(onnx_beginVM))
 print("onnx end " + str(onnx_endVM))
 
 
-
+print("Novel small test set: ")
 # new data
 tf_score = 0.0
 onnx_score = 0.0
